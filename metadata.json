@@ -1,0 +1,5 @@
+{
+  "name": "T H A R A Ai image Creator",
+  "description": "An intuitive application that allows users to upload their images and use simple text prompts to edit them or transform them into animated videos using the power of Gemini and Veo models.",
+  "requestFramePermissions": []
+}
