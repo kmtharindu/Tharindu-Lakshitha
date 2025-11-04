@@ -3,6 +3,9 @@ import { ImageData } from '../types';
 import { IMAGE_EDIT_MODEL } from '../constants';
 
 export const generateOrEditImage = async (prompt: string, imageData?: ImageData | null): Promise<string> => {
+  if (!process.env.API_KEY) {
+    throw new Error("API_KEY environment variable not set");
+  }
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const contentParts = [];

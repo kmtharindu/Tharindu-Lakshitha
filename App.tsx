@@ -3,19 +3,6 @@ import { ImageData } from './types';
 import { fileToImageData, addWatermark } from './utils/fileUtils';
 import { generateOrEditImage } from './services/geminiService';
 
-// --- API KEY WARNING ---
-const ApiKeyWarning: React.FC = () => (
-  <div className="w-full max-w-2xl mx-auto my-12 p-6 bg-red-100 border-2 border-red-300 rounded-2xl shadow-lg text-center">
-    <h2 className="text-3xl font-bold text-red-800 mb-3">Configuration Needed</h2>
-    <p className="text-red-700 text-lg mb-4">
-      The Gemini API key is missing. This application cannot connect to Google's AI services without it.
-    </p>
-    <p className="text-gray-600">
-      Please make sure the <code className="bg-red-200 text-red-900 font-mono px-1.5 py-0.5 rounded">API_KEY</code> environment variable is set in your project's settings or secrets.
-    </p>
-  </div>
-);
-
 // --- HEADER ---
 const Header: React.FC = () => (
   <header className="w-full max-w-5xl mx-auto p-4 mb-4">
@@ -183,18 +170,6 @@ const App: React.FC = () => {
   
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [modalImageUrl, setModalImageUrl] = useState<string | null>(null);
-
-  if (!process.env.API_KEY) {
-    return (
-      <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-white to-pink-100 font-sans text-gray-800 flex flex-col items-center p-4">
-        <Header />
-        <main className="w-full max-w-5xl mx-auto flex-grow flex flex-col items-center justify-center">
-          <ApiKeyWarning />
-        </main>
-        <Footer />
-      </div>
-    );
-  }
 
   const handleUseResultAsInput = () => {
     if (!resultImage) return;
